@@ -1,0 +1,32 @@
+MemoryOS 遗忘改造（实验副本）
+Copyright 2026 the memoryos-forgetting contributors
+
+This project is a modified copy of BAI-LAB/MemoryOS
+(https://github.com/BAI-LAB/MemoryOS), licensed under the Apache License 2.0.
+The upstream LICENSE file is kept unchanged in this repository.
+
+Modifications (2026-10 ~ 2026-11), listed per Apache-2.0 §4(b):
+
+  added      memoryos/scoring.py, schema.py, audit.py, archive.py,
+             consolidate.py, consolidate_llm.py
+  changed    memoryos/mid_term.py, long_term.py, short_term.py,
+             retriever.py, updater.py, memoryos.py, prompts.py
+  added      run_consolidate.py, run_disposition.py
+  added      docs/, tools/, tests/, README.md, NOTICE
+
+What the modification does:
+
+  * replaced heat-based eviction with a score/tier layer, then proved with real
+    data that the layer does not work and disabled it
+    (see docs/FORGETTING_BETA.md);
+  * kept and hardened the data-safety base: no hard deletes, valid_to with
+    --restore, atomic writes, corrupt-file quarantine, archive only on explicit
+    human confirmation;
+  * added a weekly human disposition sheet (run_disposition.py) that lists
+    capacity-pressure and archive candidates and changes nothing.
+
+The custom scoring layer is OFF by default: `USE_CUSTOM_SCORING` must be
+explicitly set to 1/true/yes/on to enable it.
+
+No personal data is included in this repository. Evaluation corpora and label
+files are intentionally excluded; see data/README.md.

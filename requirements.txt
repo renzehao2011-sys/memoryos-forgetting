@@ -1,0 +1,26 @@
+# --- 导出仓可移植路径（build_export.py 注入）
+import os
+REPO = os.environ.get("MEMORYOS_REPO", os.path.dirname(os.path.abspath(__file__)))
+DATA_ROOT = os.environ.get("MEMORYOS_DATA_ROOT", os.path.join(REPO, "data"))
+
+numpy==1.24.*
+sentence-transformers>=2.7.0,<3.0.0 # Updated for Qwen model support
+transformers>=4.51.0              # Required for newer sentence-transformer features
+FlagEmbedding>=1.2.9                # For BGE-M3 model support
+mcp
+faiss-gpu>=1.7.0,<2.0.0
+httpx[socks]
+openai
+# Web framework (for demo)
+flask>=2.0.0,<3.0.0
+
+# Optional utilities
+python-dotenv>=0.19.0,<2.0.0
+
+# Development and testing (optional)
+# pytest>=7.0.0,<8.0.0
+# pytest-asyncio>=0.20.0,<1.0.0
+
+# Additional dependencies for compatibility
+typing-extensions>=4.0.0,<5.0.0
+regex>=2022.1.18
