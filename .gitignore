@@ -24,3 +24,14 @@ tier_labels*.json
 # 系统垃圾
 .DS_Store
 Thumbs.db
+
+# 兜底：数据目录常被“拷到仓库根”而不是放进 data/
+data_*/
+*copys*/
+room_db/
+*corpus*/
+app_database
+*.tsv
+
+# upstream 的 MCP 配置样例里带启动路径，本地版本可能带 key
+mcp.json
